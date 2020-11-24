@@ -24,9 +24,11 @@ jobs:
         run: |
           echo Script starting
           python3 $GITHUB_WORKSPACE/scrapper.py
+          echo ::set-output name=exit_code::$?
           echo Script done
           
       - name: Send SMS
+        if: steps.build.outputs.exit_code == 0
         uses: nexmo-community/nexmo-sms-action@master
         env:
           NEXMO_API_KEY: ${{ secrets.NEXMO_API_KEY }}
