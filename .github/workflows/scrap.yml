@@ -21,14 +21,16 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
+        run: python3 $GITHUB_WORKSPACE/scrapper.py
+          
+      - name: Read file post_message.txt and set output parameter
+        id: set_output
         run: |
-          echo Script starting
-          python3 $GITHUB_WORKSPACE/scrapper.py
-          echo ::set-output name=exit_code::$?
-          echo Script done
+          echo "::set-output name=post_message::$(<$GITHUB_WORKSPACE/born.txt)"
+          echo "directory $GITHUB_WORKSPACE"
           
       - name: Send SMS
-        if: steps.build.outputs.exit_code == 0
+        if: steps.set_output.outputs.post_message == 'true'
         uses: nexmo-community/nexmo-sms-action@master
         env:
           NEXMO_API_KEY: ${{ secrets.NEXMO_API_KEY }}
