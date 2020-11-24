@@ -1,7 +1,6 @@
 # coding=iso-8859-1
 from urllib.request import urlopen
 import re
-import sys
 
 url = "http://www.premina.ca/puppage.htm"
 page = urlopen(url)
@@ -10,8 +9,12 @@ html = html_bytes.decode('iso-8859-1')
 isBorn = re.search('(born|prêts)', html, re.IGNORECASE)
 if isBorn:
     print("Il y a des bebes!")
-    sys.exit(0)
+    f = open("born.txt", "w")
+    f.write("true")
+    f.close()
 else:
     print("Faut encore attendre")
-    sys.exit(1)
+    f = open("born.txt", "w")
+    f.write("false")
+    f.close()
 
