@@ -23,5 +23,5 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Script starting
-          python $GITHUB_WORKSPACE/scrapper.py
+          python3 $GITHUB_WORKSPACE/scrapper.py
           echo Script done
