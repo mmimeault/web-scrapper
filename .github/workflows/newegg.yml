@@ -38,4 +38,4 @@ jobs:
         with:
           nexmoNumber: 12262471505
           recipientNumber: 15145548991
-          message: "Hey video card are ready: $(<$GITHUB_WORKSPACE/newegg.txt) ou {{steps.set_output.outputs.post_newegg_message}} ou ${{steps.set_output.outputs.post_newegg_message}}"
+          message: "Hey video card are ready: ${{steps.set_output.outputs.post_newegg_message}}"
