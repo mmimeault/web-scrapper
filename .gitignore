@@ -128,5 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Intellij
+.idea
+*.iml
+
 # App specific
 born.txt
+newegg.txt
