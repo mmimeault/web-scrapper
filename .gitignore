@@ -133,5 +133,4 @@ dmypy.json
 *.iml
 
 # App specific
-born.txt
-newegg.txt
+output/

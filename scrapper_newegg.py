@@ -1,6 +1,7 @@
 # coding=iso-8859-1
 import json
 from urllib.request import urlopen
+import os
 
 products = ["14-932-336", "14-487-518", "14-137-598", "14-137-597",
             "14-487-520", "14-126-452", "14-932-329", "14-126-457",
@@ -27,14 +28,17 @@ for product in products:
     if hasQuantity or inStock or hasStock:
         results.append("https://www.newegg.ca/p/pl?d=" + item['Description']['UrlKeywords'])
 
+filename = "output/newegg.txt"
+os.makedirs(os.path.dirname(filename), exist_ok=True)
+
 if results:
     print("Found an item")
-    f = open("newegg.txt", "w")
+    f = open(filename, "w")
     for result in results:
         f.write(result + " ,")
     f.close()
 else:
     print("Faut encore attendre")
-    f = open("newegg.txt", "w")
+    f = open(filename, "w")
     f.write("false")
     f.close()
