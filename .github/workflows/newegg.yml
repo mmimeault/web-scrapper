@@ -30,7 +30,7 @@ jobs:
         id: set_output
         run: |
           echo "::set-output name=post_newegg_message::$(<$GITHUB_WORKSPACE/output/newegg.txt)"
-          echo "directory $GITHUB_WORKSPACE"
+          echo "output of file: ${{steps.set_output.outputs.post_newegg_message}}"
 
       - name: Send SMS
         if: steps.set_output.outputs.post_newegg_message != 'false'
