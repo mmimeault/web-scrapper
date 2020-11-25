@@ -7,7 +7,7 @@ url = "http://www.premina.ca/puppage.htm"
 page = urlopen(url)
 html_bytes = page.read()
 html = html_bytes.decode('iso-8859-1')
-isBorn = re.search('(born|prêts|a)', html, re.IGNORECASE)
+isBorn = re.search('(born|prêts)', html, re.IGNORECASE)
 
 filename = "output/born.txt"
 os.makedirs(os.path.dirname(filename), exist_ok=True)
