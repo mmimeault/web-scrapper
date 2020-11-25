@@ -1,4 +1,4 @@
-name: Scrapper
+name: DogScrap
 
 on:
   pull_request:
@@ -25,13 +25,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: python3 $GITHUB_WORKSPACE/scrapper.py
-          
+
       - name: Read file post_message.txt and set output parameter
         id: set_output
         run: |
           echo "::set-output name=post_message::$(<$GITHUB_WORKSPACE/born.txt)"
           echo "directory $GITHUB_WORKSPACE"
-          
+
       - name: Send SMS
         if: steps.set_output.outputs.post_message == 'true'
         uses: nexmo-community/nexmo-sms-action@master

@@ -1,4 +1,4 @@
-name: Newegg Scrapper
+name: NeweggScrap
 
 on:
   pull_request:
