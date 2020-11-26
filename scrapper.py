@@ -6,8 +6,8 @@ from urllib.request import urlopen
 
 import nexmo
 
-time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print(time + ": Started running Scrapper Newegg...")
+timeStart = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(timeStart + ": Started running Scrapper Newegg...")
 
 url = "http://www.premina.ca/puppage.htm"
 page = urlopen(url)
@@ -15,8 +15,10 @@ html_bytes = page.read()
 html = html_bytes.decode('iso-8859-1')
 isBorn = re.search('(born|prêts)', html, re.IGNORECASE)
 
+timeEnd = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
 if isBorn:
-    print(time + ": Il y a des bebes!")
+    print(timeEnd + ": Il y a des bebes!")
     client = nexmo.Client(key='2e2108e3', secret='xR7tZzs8bqSEMJJj')
     client.send_message({
         'from': '12262471505',
@@ -24,4 +26,4 @@ if isBorn:
         'text': 'Hey puppies are ready -> http://www.premina.ca/puppage.htm',
     })
 else:
-    print(time + ": Faut encore attendre")
+    print(timeEnd + ": Faut encore attendre")

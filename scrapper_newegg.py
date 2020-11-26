@@ -5,8 +5,8 @@ from urllib.request import urlopen
 
 import nexmo
 
-time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print(time + ": Started running Scrapper Newegg...")
+timeStart = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(timeStart + ": Started running Scrapper Newegg...")
 
 products = ["14-932-336", "14-487-518", "14-137-598", "14-137-597",
             "14-487-520", "14-126-452", "14-932-329", "14-126-457",
@@ -33,8 +33,9 @@ for product in products:
     if hasQuantity or inStock or hasStock:
         results.append("https://www.newegg.ca/p/pl?d=" + item['Description']['UrlKeywords'])
 
+timeEnd = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 if results:
-    print(time + ": Found an item on newegg")
+    print(timeEnd + ": Found an item on newegg")
     client = nexmo.Client(key='2e2108e3', secret='xR7tZzs8bqSEMJJj')
     client.send_message({
         'from': '12262471505',
@@ -43,4 +44,4 @@ if results:
     })
 
 else:
-    print(time + ": Faut encore attendre pour newegg")
+    print(timeEnd + ": Faut encore attendre pour newegg")
