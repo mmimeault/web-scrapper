@@ -22,7 +22,6 @@ jobs:
         with:
           python-version: 3.8 #install the python needed
 
-      # Runs a single command using the runners shell
       - name: Run a multi-line script
         run: |
           pip3 install nexmo

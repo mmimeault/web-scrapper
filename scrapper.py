@@ -1,5 +1,4 @@
 # coding=iso-8859-1
-import os
 import re
 from datetime import datetime
 from urllib.request import urlopen
