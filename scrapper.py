@@ -6,7 +6,7 @@ from urllib.request import urlopen
 import nexmo
 
 timeStart = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print(timeStart + ": Started running Scrapper Newegg...")
+print(timeStart + ": Started running DogScrap...")
 
 url = "http://www.premina.ca/puppage.htm"
 page = urlopen(url)

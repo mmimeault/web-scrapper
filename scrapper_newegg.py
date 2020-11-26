@@ -6,7 +6,7 @@ from urllib.request import urlopen
 import nexmo
 
 timeStart = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print(timeStart + ": Started running Scrapper Newegg...")
+print(timeStart + ": Started running NeweggScrap...")
 
 products = ["14-932-336", "14-487-518", "14-137-598", "14-137-597",
             "14-487-520", "14-126-452", "14-932-329", "14-126-457",
