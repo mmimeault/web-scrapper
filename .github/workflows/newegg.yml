@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '*/5 0-1,15-23 * * 1-5'
+    - cron: '*/10 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,20 +25,3 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: python3 $GITHUB_WORKSPACE/scrapper_newegg.py
-
-      - name: Read file post_message.txt and set output parameter
-        id: set_output
-        run: |
-          echo "::set-output name=post_newegg_message::$(<$GITHUB_WORKSPACE/output/newegg.txt)"
-          echo "output of file: ${{steps.set_output.outputs.post_newegg_message}}"
-
-      - name: Send SMS
-        if: steps.set_output.outputs.post_newegg_message != 'false'
-        uses: nexmo-community/nexmo-sms-action@master
-        env:
-          NEXMO_API_KEY: ${{ secrets.NEXMO_API_KEY }}
-          NEXMO_API_SECRET: ${{ secrets.NEXMO_API_SECRET }}
-        with:
-          nexmoNumber: 12262471505
-          recipientNumber: 15145548991
-          message: "Hey video card are ready: ${{steps.set_output.outputs.post_newegg_message}}"
