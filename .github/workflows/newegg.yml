@@ -1,13 +1,7 @@
 name: NeweggScrap
 
 on:
-  pull_request:
-    branches: [ master ]
-
   workflow_dispatch:
-
-  schedule:
-    - cron: '*/10 * * * *'
 
 jobs:
   build:
